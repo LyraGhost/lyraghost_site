@@ -1,0 +1,113 @@
+//sass -t expanded --sourcemap=none --watch base.scss:main.css
+
+// ------------ fonts ------------- //
+$font-lato: Lato, helvetica, arial, sans-serif;
+$font-amatica: Amatica SC, cursive;
+
+// ------------ colors/defaults ------------- //
+$text-accent: rgb(0, 177, 230);
+$text-light: rgba(255,255,255,1);
+$text-light-2: rgba(255,255,255,0.7);
+$text-light-3: rgba(255,255,255,0.5);
+$text-dark: rgba(0,0,0,0.87);
+$text-dark-2: rgba(0,0,0,0.54);
+$text-dark-3: rgba(0,0,0,0.38);
+
+$transdef: .3s ease all;
+
+// ------------ Breaks ---------------- //
+$break-sm: 48rem;
+$break-med: 62rem;
+$break-lg: 75rem;
+
+
+@import "mixins";
+
+/*  LyraGhost V2  */
+/*  2017 Lyra Bissonnette  */
+
+/** Primary Resets and elements **/
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+    color: $text-light;
+    font-size: 16px;
+    font-family: $font-lato;
+}
+body{
+    @extend html;
+    background: rgb(0, 177, 230);
+}
+
+.med{
+    display: none;
+    @media only screen and (min-width: $break-sm) {
+        display: initial;
+    }
+}
+
+@media only screen and (min-width: $break-sm) {
+    .sm{
+        display: none;
+    }
+}
+
+.fa{
+    text-align: center;
+}
+
+a, button{
+    &:focus{
+        outline: none;
+    }
+    transition: $transdef;
+    color: $text-accent;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner {
+    padding: 0 !important;
+    border: 0 none !important;
+}
+
+//base layout
+@import "loader";
+
+@include keyframes(indeterminate){
+    0% { left: -35%; right:100%; }
+    60% { left: 100%; right: -90%; }
+    100% { left: 100%; right: -90%; }
+}
+@include keyframes(indeterminate-short) {
+    0% { left: -200%; right: 100%; }
+    60% { left: 107%; right: -8%; }
+    100% { left: 107%; right: -8%; }
+}
+
+@import "menu";
+
+//cover
+@import "cover";
+
+@include keyframes(fadein) {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+//projects
+@import "projects";
+
+@import "project-view";
+
+//about
+@import "about";
+
+//contact
+@import "contact";

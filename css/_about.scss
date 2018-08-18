@@ -1,0 +1,63 @@
+#about{
+    background-color: rgb(9, 166, 228);
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    div{
+        width: 100%;
+        margin: 0 auto;
+        padding: 4.625rem 2rem 4rem;
+        box-sizing: border-box;
+        transition: 0.3s ease all;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        @media only screen and (min-width: $break-sm) {
+            width: 90%;
+        }
+        @media only screen and (min-width: $break-med) {
+            width: 80%;
+        }
+        @media only screen and (min-width: $break-lg) {
+            width: 75%;
+        }
+        h2{
+            font-family: $font-amatica;
+            font-size: 2.5rem;
+            font-weight: normal;
+            width: 100%;
+            @media only screen and (min-width: $break-sm) {
+                font-size: 3rem;
+            }
+            @media only screen and (min-width: $break-med) {
+                font-size: 4rem;
+            }
+        }
+        p{
+            padding-top: 1.5rem;
+            font-size: 14pt;
+            line-height: 1.4;
+            font-weight: 300;
+            @media only screen and (max-width: 767px) and (orientation: landscape){
+                font-size: 16pt;
+                line-height: 1.5;
+            }
+            @media only screen and (min-width: $break-sm) {
+                font-size: 16pt;
+                line-height: 1.5;
+            }
+            @media only screen and (min-width: $break-med) {
+                font-size: 18pt;
+                padding-top: 1.6rem;
+            }
+            @media only screen and (min-width: $break-lg) {
+                & + p{
+                    width: 48%;
+                }
+            }
+        }
+    }
+}

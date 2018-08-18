@@ -1,0 +1,90 @@
+#loader{
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    display: none;
+    z-index: 200;
+    transition: opacity .3s cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    &.loading{
+        opacity: 1;
+    }
+
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    p{
+        padding-bottom: 1rem;
+        font-family: $font-amatica;
+        font-size: 2rem;
+        transition: $transdef;
+        @media only screen and (min-width: $break-sm){
+            font-size: 3rem;
+        }
+        @media only screen and (min-width: $break-lg){
+            font-size: 4rem;
+        }
+
+    }
+    .progress{
+        position: relative;
+        height: 8px;
+        display: block;
+        width: 90%;
+        background-color: rgba(255,255,255,0.5);
+        border-radius: 4px;
+        margin: 0.5rem 0 1rem 0;
+        overflow: hidden;
+        transition: $transdef;
+        @media only screen and (min-width: $break-sm) {
+            width: 75%;
+        }
+        @media only screen and (min-width: $break-lg) {
+            width: 50%;
+        }
+        .fixed{
+            background: linear-gradient(to right, #00b1e6 0%, #761cc7 100%);
+            background-attachment: fixed;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            transition: width .3s linear;
+            border-radius: 4px;
+        }
+        .unfixed{
+            background: linear-gradient(to right, #00b1e6 0%, #761cc7 100%);
+            background-attachment: fixed;
+            &:before {
+                content: '';
+                position: absolute;
+                background: inherit;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                will-change: left, right;
+                -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+                animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                background: inherit;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                will-change: left, right;
+                -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+                animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+                -webkit-animation-delay: 1.15s;
+                animation-delay: 1.15s;
+            }
+        }
+    }
+}

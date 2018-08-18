@@ -1,0 +1,85 @@
+#contact{
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to bottom right, rgb(196, 28, 199) 0%, rgb(118, 28, 199) 100%);
+    div{
+        width: 100%;
+        margin: 0 auto;
+        padding: 4.625rem 2rem 1rem;
+        box-sizing: border-box;
+        transition: 0.3s ease all;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        align-items: center;
+        @media only screen and (min-width: $break-sm) {
+            width: 90%;
+            padding-bottom: 2rem;
+        }
+        @media only screen and (min-width: $break-med) {
+            width: 80%;
+            padding-bottom: 4rem;
+        }
+        @media only screen and (min-width: $break-lg) {
+            width: 75%;
+        }
+        h2{
+            font-family: $font-amatica;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: normal;
+            width: 100%;
+            text-align: center;
+            @media only screen and (min-width: $break-sm) {
+                font-size: 3.5rem;
+            }
+            @media only screen and (min-width: $break-med) {
+                font-size: 4rem;
+            }
+        }
+        & > a{
+            color: $text-light;
+            font-size: 1.25rem;
+            padding: 0 0.5rem 0.25rem;
+            border-bottom: 2px solid transparent;
+            margin-top: 1rem;
+            &:hover{
+                border-color: $text-light;
+            }
+            @media only screen and (min-width: $break-sm) {
+                font-size: 1.75rem;
+            }
+            @media only screen and (min-width: $break-med) {
+                font-size: 2rem;
+            }
+        }
+        ul{
+            margin-top: 2rem;
+            list-style-type: none;
+            color: $text-light;
+            li{
+                display: inline-block;
+                a{
+                    color: inherit;
+                    display: block;
+                    &:hover{
+                        color: $text-light;
+                    }
+                }
+            }
+            @media only screen and (min-width: $break-sm) {
+                &:hover{
+                    color: $text-light-3;
+                }
+            }
+        }
+    }
+    p{
+        padding: 2rem;
+        text-align: center;
+        color: $text-light-2;
+    }
+}

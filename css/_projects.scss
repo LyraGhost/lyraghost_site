@@ -1,0 +1,127 @@
+#projects{
+    min-height: 75vh;
+    background-color: rgb(0, 60, 78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .project-list{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        padding: 4.625rem 0.5rem 2rem;
+        box-sizing: border-box;
+        transition: $transdef;
+        @media only screen and (max-width: 767px) and (orientation: landscape){
+            padding: 4.625rem 12%;
+        }
+        @media only screen and (min-width: $break-sm) {
+            padding: 4.625rem 1rem;
+        }
+        @media only screen and (min-width: $break-med) {
+            padding: 4.625rem 2rem;
+        }
+        @media only screen and (min-width: $break-lg) {
+            width: 85%;
+        }
+        .project-wrap{
+            width: 100%;
+            @media only screen and (min-width: $break-sm) {
+                width: 49%;
+            }
+            @media only screen and (min-width: $break-med) {
+                width: 32%;
+            }
+            .title{
+                padding: 0 1rem;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                margin-bottom: 1rem;
+                h2{
+                    font-size: 1.2rem;
+                    font-weight: normal;
+                    padding-bottom: .25rem;
+                    transition: $transdef;
+                    @media only screen and (min-width: $break-med) {
+                        font-size: 1.3rem;
+                    }
+                }
+                span{
+                    font-size: 1rem;
+                    height: 1.25rem;
+                    color: rgba(255,255,255,0.7);
+                }
+            }
+        }
+        .project {
+            width: 100%;
+            margin-bottom: .5rem;
+            padding-bottom: 56.25%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12),
+                0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            font-size: 0;
+            background-size: cover;
+            background-position: center top;
+            border-radius: 2px;
+            background-color: rgba(255,255,255,1);
+            transition: $transdef;
+            @media only screen and (min-width: $break-med) {
+                padding-bottom: 75%;
+            }
+            a{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                @media only screen and (min-width: $break-lg){
+                    &:hover{
+                        background-color: rgba(0,0,0,0.75);
+                        span{
+                            opacity: 1;
+                        }
+                    }
+                    span{
+                        font-size: 2.5rem;
+                        color: #fff;
+                        opacity: 0;
+                        transition: $transdef;
+                        font-family: $font-amatica;
+                    }
+                }
+            }
+        }
+    }
+    p{
+        transition: $transdef;
+        width: 100%;
+        text-align: center;
+        @media only screen and (min-width: $break-med) {
+            text-align: right;
+        }
+        a{
+            font-family: $font-amatica;
+            color: $text-light;
+            font-size: 2rem;
+            border-bottom: 2px solid transparent;
+            padding: 0 0.5rem;
+            &:hover{
+                border-color: $text-light;
+            }
+            @media only screen and (min-width: $break-med) {
+                font-size: 2.5rem;
+                margin-right: 2rem;
+            }
+        }
+    }
+}

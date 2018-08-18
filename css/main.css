@@ -1,0 +1,1142 @@
+/*  LyraGhost V2  */
+/*  2017 Lyra Bissonnette  */
+/** Primary Resets and elements **/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  color: white;
+  font-size: 16px;
+  font-family: Lato, helvetica, arial, sans-serif;
+}
+
+body {
+  background: #00b1e6;
+}
+
+.med {
+  display: none;
+}
+@media only screen and (min-width: 48rem) {
+  .med {
+    display: initial;
+  }
+}
+
+@media only screen and (min-width: 48rem) {
+  .sm {
+    display: none;
+  }
+}
+.fa {
+  text-align: center;
+}
+
+a, button {
+  transition: 0.3s ease all;
+  color: #00b1e6;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+a:focus, button:focus {
+  outline: none;
+}
+
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner {
+  padding: 0 !important;
+  border: 0 none !important;
+}
+
+#loader {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  display: none;
+  z-index: 200;
+  transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#loader.loading {
+  opacity: 1;
+}
+#loader p {
+  padding-bottom: 1rem;
+  font-family: Amatica SC, cursive;
+  font-size: 2rem;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 48rem) {
+  #loader p {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #loader p {
+    font-size: 4rem;
+  }
+}
+#loader .progress {
+  position: relative;
+  height: 8px;
+  display: block;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  margin: 0.5rem 0 1rem 0;
+  overflow: hidden;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 48rem) {
+  #loader .progress {
+    width: 75%;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #loader .progress {
+    width: 50%;
+  }
+}
+#loader .progress .fixed {
+  background: linear-gradient(to right, #00b1e6 0%, #761cc7 100%);
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: width .3s linear;
+  border-radius: 4px;
+}
+#loader .progress .unfixed {
+  background: linear-gradient(to right, #00b1e6 0%, #761cc7 100%);
+  background-attachment: fixed;
+}
+#loader .progress .unfixed:before {
+  content: '';
+  position: absolute;
+  background: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+#loader .progress .unfixed:after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  -webkit-animation-delay: 1.15s;
+  animation-delay: 1.15s;
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@-moz-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@-o-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+@-moz-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+@-o-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+.top-menu {
+  position: fixed;
+  padding: 1rem 1rem;
+  z-index: 50;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+}
+@media only screen and (min-width: 48rem) {
+  .top-menu {
+    padding: 1rem 2rem;
+  }
+  .top-menu:hover .project-nav button {
+    opacity: 0.5;
+  }
+  .top-menu:hover .main-nav span a {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .top-menu {
+    padding: 1rem 3rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  .top-menu {
+    padding: 1rem 4rem;
+  }
+}
+.top-menu h1 {
+  float: left;
+  font-family: Amatica SC, cursive;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+@media only screen and (min-width: 48rem) {
+  .top-menu h1.med {
+    display: block;
+  }
+}
+.top-menu h1 a {
+  color: white;
+}
+.top-menu .main-nav {
+  float: right;
+}
+.top-menu .main-nav span {
+  font-size: 1.75rem;
+  font-family: Amatica SC, cursive;
+  line-height: 1.3;
+}
+.top-menu .main-nav span + span {
+  padding-left: 0.5rem;
+}
+.top-menu .main-nav span a {
+  color: white;
+  padding: 0 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+.top-menu .main-nav span a:hover {
+  color: white;
+  border-bottom-color: white;
+}
+@media only screen and (min-width: 48rem) {
+  .top-menu .main-nav {
+    display: block;
+  }
+}
+.top-menu .project-nav {
+  display: inline;
+  float: right;
+  opacity: 0;
+  font-size: 0;
+  transition: all 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+}
+.top-menu .project-nav.open {
+  opacity: 1;
+  width: 110px;
+}
+.top-menu .project-nav button {
+  padding: 0.5rem;
+  background: none;
+  margin-left: 0.25rem;
+  height: 2.625rem;
+}
+.top-menu .project-nav button:hover {
+  opacity: 1;
+}
+.top-menu .project-nav button.close span {
+  background: url(../images/x.png) no-repeat;
+  width: 1.5rem;
+  background-size: 1.5rem 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  opacity: 1;
+}
+.top-menu .project-nav button.next span {
+  background: url(../images/arrow_right.png) no-repeat;
+  height: 1.5rem;
+  display: inline-block;
+  opacity: 1;
+  width: 0.8125rem;
+  background-size: 0.8125re, 1.5rem;
+}
+.top-menu .project-nav button.prev span {
+  background: url(../images/arrow_left.png) no-repeat;
+  height: 1.5rem;
+  display: inline-block;
+  opacity: 1;
+  width: 0.8125rem;
+  background-size: 0.8125re, 1.5rem;
+}
+.top-menu .menu-btn {
+  opacity: 1 !important;
+  padding: 0.75rem 0.75rem;
+  background-color: transparent;
+  background-image: none;
+  border-radius: 0.25rem;
+  z-index: 100;
+  float: right;
+}
+.top-menu .menu-btn .bar {
+  display: block;
+  width: 28px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: white;
+  transform-origin: 0px 0px;
+  transition: transform 0.3s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+.top-menu .menu-btn .bar:first-child {
+  transform-origin: 0% 0%;
+}
+.top-menu .menu-btn .bar:nth-last-child(1) {
+  transform-origin: 0% 100%;
+}
+.top-menu .menu-btn .bar + .bar {
+  margin-top: 6px;
+}
+.top-menu .menu-btn.open .bar {
+  opacity: 1;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.top-menu .menu-btn.open .bar:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+.top-menu .menu-btn.open .bar:nth-last-child(1) {
+  opacity: 1;
+  transform: rotate(-45deg) translate(-1px, 1px);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: -115%;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  transition: top 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  background-color: rgba(0, 60, 78, 0.95);
+  z-index: 20;
+}
+@media only screen and (min-width: 48rem) {
+  .mobile-menu {
+    display: none;
+  }
+}
+.mobile-menu ul {
+  list-style-type: none;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.mobile-menu ul li {
+  font-family: Amatica SC, cursive;
+  font-size: 3rem;
+  text-align: center;
+}
+.mobile-menu ul li.active a {
+  border-color: #00b1e6;
+}
+.mobile-menu ul li a {
+  border-bottom: 3px solid transparent;
+  color: white;
+  padding: 0 0.5rem;
+}
+.mobile-menu ul li a:hover {
+  color: #00b1e6;
+  border-color: #00b1e6;
+}
+.mobile-menu ul li + li {
+  margin-top: 1rem;
+}
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .mobile-menu ul li {
+    font-size: 2rem;
+  }
+}
+.mobile-menu.open {
+  top: 0;
+}
+
+#cover {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  background: -moz-linear-gradient(top, #00b1e6 0%, #761cc7 100%);
+  background: -webkit-linear-gradient(top, #00b1e6 0%, #761cc7 100%);
+  background: linear-gradient(to bottom, #00b1e6 0%, #761cc7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b1e6', endColorstr='#761cc7',GradientType=0);
+  transition: opacity 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+}
+#cover h1 {
+  font-family: Amatica SC, cursive;
+  line-height: 1;
+  padding-bottom: 1rem;
+  font-size: 5rem;
+  font-weight: normal;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 48rem) {
+  #cover h1 {
+    font-size: 10rem;
+    padding-bottom: 1.5rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #cover h1 {
+    font-size: 12rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #cover h1 {
+    font-size: 16rem;
+  }
+}
+#cover p {
+  font-size: 1.125rem;
+  line-height: normal;
+  padding-bottom: 1rem;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 48rem) {
+  #cover p {
+    font-size: 1.4rem;
+    padding-bottom: 1.5rem;
+  }
+  #cover p span.med {
+    display: inline;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #cover p {
+    font-size: 1.5rem;
+  }
+}
+#cover nav {
+  position: absolute;
+  bottom: 4rem;
+  font-family: Amatica SC, cursive;
+  width: 100%;
+  left: 0;
+}
+#cover nav ul li a {
+  padding: 0 0.5rem;
+  border-bottom: 2px solid transparent;
+}
+#cover nav ul li a:hover {
+  border-color: white;
+}
+@media only screen and (min-width: 48rem) {
+  #cover nav {
+    display: block;
+  }
+}
+@media only screen and (min-width: 48rem) and (max-height: 660px) {
+  #cover nav {
+    display: none;
+  }
+}
+#cover ul {
+  list-style-type: none;
+  color: white;
+}
+#cover ul li {
+  display: inline-block;
+  font-size: 3rem;
+}
+#cover ul li a {
+  color: inherit;
+  display: block;
+}
+#cover ul li a:hover {
+  color: white;
+}
+#cover ul li + li {
+  margin-left: 1rem;
+}
+@media only screen and (min-width: 48rem) {
+  #cover ul:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+#cover ul.social li, #contact ul.social li {
+  font-size: 1.5rem;
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+}
+#cover ul.social li a, #contact ul.social li a {
+  line-height: 2rem;
+}
+#cover ul.social li a:hover, #contact ul.social li a:hover {
+  color: white;
+}
+#cover ul.social li + li, #contact ul.social li + li {
+  margin-left: 0.5rem;
+}
+@media only screen and (min-width: 48rem) {
+  #cover ul.social li, #contact ul.social li {
+    font-size: 2rem;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  #cover ul.social li a, #contact ul.social li a {
+    line-height: 2.5rem;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#projects {
+  min-height: 75vh;
+  background-color: #003c4e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#projects .project-list {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 4.625rem 0.5rem 2rem;
+  box-sizing: border-box;
+  transition: 0.3s ease all;
+}
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  #projects .project-list {
+    padding: 4.625rem 12%;
+  }
+}
+@media only screen and (min-width: 48rem) {
+  #projects .project-list {
+    padding: 4.625rem 1rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #projects .project-list {
+    padding: 4.625rem 2rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #projects .project-list {
+    width: 85%;
+  }
+}
+#projects .project-list .project-wrap {
+  width: 100%;
+}
+@media only screen and (min-width: 48rem) {
+  #projects .project-list .project-wrap {
+    width: 49%;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #projects .project-list .project-wrap {
+    width: 32%;
+  }
+}
+#projects .project-list .project-wrap .title {
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#projects .project-list .project-wrap .title h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding-bottom: .25rem;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 62rem) {
+  #projects .project-list .project-wrap .title h2 {
+    font-size: 1.3rem;
+  }
+}
+#projects .project-list .project-wrap .title span {
+  font-size: 1rem;
+  height: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+#projects .project-list .project {
+  width: 100%;
+  margin-bottom: .5rem;
+  padding-bottom: 56.25%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  font-size: 0;
+  background-size: cover;
+  background-position: center top;
+  border-radius: 2px;
+  background-color: white;
+  transition: 0.3s ease all;
+}
+@media only screen and (min-width: 62rem) {
+  #projects .project-list .project {
+    padding-bottom: 75%;
+  }
+}
+#projects .project-list .project a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media only screen and (min-width: 75rem) {
+  #projects .project-list .project a:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  #projects .project-list .project a:hover span {
+    opacity: 1;
+  }
+  #projects .project-list .project a span {
+    font-size: 2.5rem;
+    color: #fff;
+    opacity: 0;
+    transition: 0.3s ease all;
+    font-family: Amatica SC, cursive;
+  }
+}
+#projects p {
+  transition: 0.3s ease all;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (min-width: 62rem) {
+  #projects p {
+    text-align: right;
+  }
+}
+#projects p a {
+  font-family: Amatica SC, cursive;
+  color: white;
+  font-size: 2rem;
+  border-bottom: 2px solid transparent;
+  padding: 0 0.5rem;
+}
+#projects p a:hover {
+  border-color: white;
+}
+@media only screen and (min-width: 62rem) {
+  #projects p a {
+    font-size: 2.5rem;
+    margin-right: 2rem;
+  }
+}
+
+#project-view {
+  background-color: #003c4e;
+  overflow: hidden;
+}
+#project-view .hero {
+  min-height: 70vh;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+#project-view .hero h1 {
+  font-size: 3.5rem;
+  font-family: Amatica SC, cursive;
+  font-weight: normal;
+  line-height: 1;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .hero h1 {
+    font-size: 4.5rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #project-view .hero h1 {
+    font-size: 5.5rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #project-view .hero h1 {
+    font-size: 7rem;
+  }
+}
+#project-view .hero p {
+  font-size: 1.25rem;
+  padding-top: 2rem;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .hero p {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #project-view .hero p {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #project-view .hero p {
+    font-size: 2rem;
+  }
+}
+#project-view .content {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem 2rem;
+  box-sizing: border-box;
+  transition: 0.3s ease all;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .content {
+    width: 90%;
+    padding: 2.5rem 2rem 3rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #project-view .content {
+    width: 80%;
+    padding: 4.625rem 2rem 4rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #project-view .content {
+    width: 75%;
+  }
+}
+#project-view .content p {
+  padding-top: 1.5rem;
+  font-size: 14pt;
+  line-height: 1.4;
+  font-weight: 300;
+}
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  #project-view .content p {
+    font-size: 16pt;
+    line-height: 1.5;
+  }
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .content p {
+    font-size: 16pt;
+    line-height: 1.5;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #project-view .content p {
+    font-size: 18pt;
+    padding-top: 1.6rem;
+  }
+}
+#project-view .content p a {
+  border-bottom: 1px solid transparent;
+  padding: 0 .2rem .2rem;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .content p a:hover {
+    border-color: #00b1e6;
+  }
+}
+#project-view .content .images {
+  text-align: center;
+  padding-top: 2rem;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .content .images {
+    padding-top: 3rem;
+  }
+}
+#project-view .content .images span {
+  margin: 2rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0;
+  display: block;
+}
+#project-view .content .images span + span {
+  margin-top: 4rem;
+}
+#project-view .content .images span a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#project-view img {
+  width: 100%;
+}
+#project-view .container {
+  padding-bottom: 1rem;
+}
+#project-view .error {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 0;
+}
+#project-view .error p {
+  font-size: 1.2rem;
+}
+@media only screen and (min-width: 48rem) {
+  #project-view .error p {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #project-view .error p {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #project-view .error p {
+    font-size: 2rem;
+  }
+}
+#project-view .error p + p {
+  padding-top: 1rem;
+}
+
+#about {
+  background-color: #09a6e4;
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#about div {
+  width: 100%;
+  margin: 0 auto;
+  padding: 4.625rem 2rem 4rem;
+  box-sizing: border-box;
+  transition: 0.3s ease all;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 48rem) {
+  #about div {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #about div {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #about div {
+    width: 75%;
+  }
+}
+#about div h2 {
+  font-family: Amatica SC, cursive;
+  font-size: 2.5rem;
+  font-weight: normal;
+  width: 100%;
+}
+@media only screen and (min-width: 48rem) {
+  #about div h2 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #about div h2 {
+    font-size: 4rem;
+  }
+}
+#about div p {
+  padding-top: 1.5rem;
+  font-size: 14pt;
+  line-height: 1.4;
+  font-weight: 300;
+}
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  #about div p {
+    font-size: 16pt;
+    line-height: 1.5;
+  }
+}
+@media only screen and (min-width: 48rem) {
+  #about div p {
+    font-size: 16pt;
+    line-height: 1.5;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #about div p {
+    font-size: 18pt;
+    padding-top: 1.6rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #about div p + p {
+    width: 48%;
+  }
+}
+
+#contact {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, #c41cc7 0%, #761cc7 100%);
+}
+#contact div {
+  width: 100%;
+  margin: 0 auto;
+  padding: 4.625rem 2rem 1rem;
+  box-sizing: border-box;
+  transition: 0.3s ease all;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (min-width: 48rem) {
+  #contact div {
+    width: 90%;
+    padding-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #contact div {
+    width: 80%;
+    padding-bottom: 4rem;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  #contact div {
+    width: 75%;
+  }
+}
+#contact div h2 {
+  font-family: Amatica SC, cursive;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (min-width: 48rem) {
+  #contact div h2 {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #contact div h2 {
+    font-size: 4rem;
+  }
+}
+#contact div > a {
+  color: white;
+  font-size: 1.25rem;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 2px solid transparent;
+  margin-top: 1rem;
+}
+#contact div > a:hover {
+  border-color: white;
+}
+@media only screen and (min-width: 48rem) {
+  #contact div > a {
+    font-size: 1.75rem;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  #contact div > a {
+    font-size: 2rem;
+  }
+}
+#contact div ul {
+  margin-top: 2rem;
+  list-style-type: none;
+  color: white;
+}
+#contact div ul li {
+  display: inline-block;
+}
+#contact div ul li a {
+  color: inherit;
+  display: block;
+}
+#contact div ul li a:hover {
+  color: white;
+}
+@media only screen and (min-width: 48rem) {
+  #contact div ul:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+#contact p {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
